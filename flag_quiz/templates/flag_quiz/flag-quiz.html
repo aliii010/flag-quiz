@@ -1,0 +1,19 @@
+{% extends 'flag_quiz/base.html' %}
+{% load static %}
+
+{% block title %}Flag Quiz{% endblock title %}
+{% block css_files %}
+  <link rel="stylesheet" href="{% static 'flag_quiz/flag-quiz.css' %}">
+{% endblock css_files %}
+
+{% block content %}
+  <div id="main">
+    <img src="{{ flag.image.url }}" alt="{{ flag.name }}" flag-name="{{ flag.name }}" id="flag-image">
+    <input type="text" id="user-input" oninput="checkAnswer()">
+    <button id="next-button" onclick="getNextRandomFlag()">Next</button>
+    <p id="terminated-message"></p>
+  </div>
+
+
+  <script src="{% static 'flag_quiz/flag-quiz.js' %}"></script>
+{% endblock content %}
