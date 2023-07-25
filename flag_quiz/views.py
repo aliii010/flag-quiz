@@ -6,11 +6,7 @@ from .models import Flag
 # Create your views here.
 
 def index(request):  
-  all_flags = Flag.objects.all()
-  random_flag = random.choice(all_flags)
-  return render(request, "flag_quiz/flag-quiz.html", {
-    "flag": random_flag,
-  })
+  return render(request, "flag_quiz/flag-quiz.html")
 
 
 def getNextRandomFlag(request):
