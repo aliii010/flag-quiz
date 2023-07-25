@@ -3,7 +3,7 @@
 
 {% block title %}Flag Quiz{% endblock title %}
 {% block css_files %}
-  <link rel="stylesheet" href="{% static 'flag_quiz/flag-quiz.css' %}">
+  <link rel="stylesheet" href="{% static 'flag_quiz/css/flag-quiz.css' %}">
 {% endblock css_files %}
 
 {% block content %}
@@ -11,9 +11,10 @@
     <img src="{{ flag.image.url }}" alt="{{ flag.name }}" flag-name="{{ flag.name }}" id="flag-image">
     <input type="text" id="user-input" oninput="checkAnswer()">
     <button id="next-button" onclick="getNextRandomFlag()">Next</button>
+    <button id="previous-button" onclick="getPreviousFlag()">Previous</button>
     <p id="terminated-message"></p>
   </div>
 
 
-  <script src="{% static 'flag_quiz/flag-quiz.js' %}"></script>
+  <script src="{% static 'flag_quiz/js/flag-quiz.js' %}"></script>
 {% endblock content %}
