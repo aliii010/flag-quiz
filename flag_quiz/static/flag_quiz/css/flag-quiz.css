@@ -1,31 +1,153 @@
-#main {
-  height: 350px;
-  width: 650px;
-  background-color: rgb(167, 166, 166);
-
+#main-container {
   margin: auto;
-  margin-top: 160px;
-  padding: 40px;
+  margin-top: 100px;
+  margin-bottom: 100px;
 
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center ;
 }
 
-#main img {
-  height: 140px;
-  width: 200px;
-  object-fit: contain;
-}
+#game-bar-box {
+  display: flex;
+  flex-direction: row;
 
-#main input {
   margin-top: 40px;
+}
+
+#play-gamer-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  margin-right: 80px;
+}
+
+#play-gamer-bar .flag-img {
+  height: 100px;
+  width: 160px;
+  object-fit: cover;
+
+  margin-right: 20px;
+}
+
+#play-gamer-bar button {
+  border: 2px solid rgb(38, 38, 38);
+  border-radius: 4px;
+  background-color: transparent;  
+  cursor: pointer;
+
+  padding: 12px 16px 12px 16px;
+  font-size: 16px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+} 
+
+#play-gamer-bar button img {
+  height: 20px;
+  width: 20px;
+  object-fit: cover;
+
+  margin: 0;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+#play-gamer-bar button:hover {
+  background-color: #262626;
+  color: rgb(211, 211, 211);
+}
+
+#play-gamer-bar button:hover > img {
+  filter: invert(73%) sepia(97%) saturate(0%) hue-rotate(134deg) brightness(97%) contrast(91%);
+}
+
+#play-gamer-bar input {
+  margin: 0 20px 0 20px;
   padding: 10px;
 
-  width: 300px;
+  width: 250px;
+  height: 50px;
   background-color: transparent;
-  border: 2px solid white;
+  border: 2px solid #808080;
   border-radius: 8px;
   box-sizing: border-box;
-  transition: 0.2s;
+}
+
+#time-score-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  
+  position: relative;
+}
+
+#time-score-box p {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+#time-score-box .score {
+  margin-right: 20px;
+}
+
+#time-score-box p span {
+  font-size: 20px;
+  font-weight: 500;
+  margin-right: 6px;
+}
+
+#time-score-box .pause-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: transparent;
+  height: 26px;
+  width: 26px;
+  border: 2px solid #262626;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+#time-score-box .pause-button img {
+  height: 20px;
+  width: 20px;
+}
+
+#time-score-box .pause-button:hover {
+  background-color: #262626;
+  color: rgb(211, 211, 211);
+}
+
+#time-score-box .pause-button:hover > img {
+  filter: invert(73%) sepia(97%) saturate(0%) hue-rotate(134deg) brightness(97%) contrast(91%); 
+}
+
+table {
+  border-collapse: collapse;
+  border: 2px solid rgb(157, 157, 157);
+}
+
+td {
+  height: 100px;
+  width: 140px;
+  text-align: center;
+  padding-top: 15px;
+  cursor: pointer;
+}
+
+td:hover {
+  background-color: #ffbb008d;
+}
+
+table img {
+  height: 60px;
+  width: 120px;
+  object-fit: contain;
 }

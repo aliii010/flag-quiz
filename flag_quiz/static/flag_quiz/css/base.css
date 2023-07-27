@@ -1,4 +1,7 @@
 body {
+  background-color: rgb(211, 211, 211);
   margin: 0;
-  background-color: rgb(60, 59, 59);
+  font-family: 'Raleway', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto Slab', serif;
 }

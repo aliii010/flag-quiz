@@ -6,7 +6,15 @@ from .models import Flag
 # Create your views here.
 
 def index(request):  
-  return render(request, "flag_quiz/flag-quiz.html")
+  all_flags = Flag.objects.all()
+  flags_data = []
+  for obj in all_flags:
+    flags_data.append({'name': obj.name, 'image': obj.image.url})
+
+  rows = [flags_data[i:i+6] for i in range(0, len(flags_data), 6)]
+  return render(request, "flag_quiz/flag-quiz.html", {
+    'rows': rows,
+  })
 
 
 def getNextRandomFlag(request):

@@ -7,14 +7,37 @@
 {% endblock css_files %}
 
 {% block content %}
-  <div id="main">
-    <img src="{{ flag.image.url }}" alt="{{ flag.name }}" flag-name="{{ flag.name }}" id="flag-image">
-    <input type="text" id="user-input" oninput="checkAnswer()">
-    <button id="next-button" onclick="getNextRandomFlag()">Next</button>
-    <button id="previous-button" onclick="getPreviousFlag()">Previous</button>
-    <p id="terminated-message"></p>
-  </div>
+  <div id="main-container">
+    <div id="game-bar-box">
+      <div id="play-gamer-bar">
+        <img src="{{ flag.image.url }}" id="flag-image" class="flag-img" src="images/cn.png" alt="{{ flag.name }}" flag-name="{{ flag.name }}">
+        <button id="previous-button" onclick="getPreviousFlag()"><img src="{% static 'flag_quiz/images/left-arrow.png' %}" alt="left-arrow">Prev</button>
+        <input id="user-input" oninput="checkAnswer()" type="text" placeholder="Enter Country">
+        <button id="next-button" onclick="getNextRandomFlag()">Next<img src="{% static 'flag_quiz/images/right-arrow.png' %}" alt="right-arrow"></button>
+      </div>
+      <div id="time-score-box">
+        <p id="score" class="score"><span>SCORE: </span>0/197</p>
+        <button class="pause-button"><img src="{% static 'flag_quiz/images/pause.png' %}" alt="pause"></button>
+        <p class="timer"><span>TIMER: </span>00:00</p>
+      </div>
+    </div>
 
+    <table border="1">
+      {% for row in rows %}
+        <tr>
+          {% for flag_data in row %}
+            <td>
+              <img src="{{ flag_data.image }}" alt="{{ flag_data.name }}">
+              <p>{{ flag_data.name }}</p>
+            </td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </table>
+
+    <p id="terminated-message"></p>
+
+  </div>
 
   <script src="{% static 'flag_quiz/js/flag-quiz.js' %}"></script>
 {% endblock content %}
