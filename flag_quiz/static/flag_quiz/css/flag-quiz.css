@@ -142,12 +142,12 @@ td {
   cursor: pointer;
 }
 
-td:hover {
-  background-color: #ffbb008d;
-}
-
 table img {
   height: 60px;
   width: 120px;
   object-fit: contain;
+}
+
+.change-background_of_cell {
+  background-color: rgba(255, 166, 0, 0.539);
 }

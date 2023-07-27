@@ -26,7 +26,7 @@
       {% for row in rows %}
         <tr>
           {% for flag_data in row %}
-            <td>
+            <td id="{{ flag_data.name }}" flag-name="{{ flag_data.name }}">
               <img src="{{ flag_data.image }}" alt="{{ flag_data.name }}">
               <p>{{ flag_data.name }}</p>
             </td>

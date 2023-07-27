@@ -9,6 +9,22 @@ async function fetchJson(url) {
   return data;
 }
 
+let prev_cell = null;
+async function checkCell() {
+  if (prev_cell !== null) {
+    prev_cell.classList.remove('change-background_of_cell');
+  }
+  const flag_name = document.querySelector("img.flag-img").getAttribute("flag-name").toLowerCase();
+  const cell = document.getElementById(flag_name);
+  const selector = '#' + flag_name;
+  const cell_flag_name = document.querySelector(selector).getAttribute("flag-name");
+
+  if (flag_name == cell_flag_name) {
+    cell.classList.add('change-background_of_cell');
+  }
+  prev_cell = cell;
+}
+
 const known_flags = new Set();
 let shown_flags = [];
 
@@ -22,10 +38,13 @@ async function getNextRandomFlag() {
   shown_flags.push(data);
   console.log(shown_flags);
 
-  const img_element = document.querySelector("img");
+  const img_element = document.querySelector("img.flag-img");
   img_element.alt = data.name;
   img_element.src = data.image;
   img_element.setAttribute("flag-name", data.name);
+
+  checkCell();
+
   return data;
 }
 
@@ -38,21 +57,22 @@ function getPreviousFlag() {
   const previous_data = shown_flags[getPreviousFlag.previous_flag];
   getPreviousFlag.previous_flag--;
 
-  const img_element = document.querySelector("img");
+  const img_element = document.querySelector("img.flag-img");
   img_element.alt = previous_data.name;
   img_element.src = previous_data.image;
   img_element.setAttribute("flag-name", previous_data.name);
+
+  checkCell();
 }
 
 // after clicking previous button, when the next button is clicked the index of the previous flag is changed back to before last element of the 'shown_flags' array.
 document.getElementById("next-button").addEventListener('click', () => {
   getPreviousFlag.previous_flag = shown_flags.length - 1;
-  console.log(getPreviousFlag.previous_flag);
 });
 
 async function checkAnswer() {
   const user_answer = document.getElementById('user-input').value.toLowerCase();
-  const flag_name = document.querySelector("img").getAttribute("flag-name").toLowerCase();
+  const flag_name = document.querySelector("img.flag-img").getAttribute("flag-name").toLowerCase();
   
   if (user_answer == flag_name) {
     document.getElementById('user-input').value = "";
