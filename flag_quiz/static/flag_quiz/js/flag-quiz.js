@@ -1,3 +1,8 @@
+window.onload = async function() {
+  await getNextRandomFlag();
+  removeElements();
+};
+
 // fetching json data (name, image and etc.) from the server side using getNextRandomFlag function in views.py
 async function fetchJson(url) {
   const response = await fetch(url);
@@ -14,12 +19,12 @@ async function checkCell() {
   if (prev_cell !== null) {
     prev_cell.classList.remove('change-background_of_cell');
   }
-  const flag_name = document.querySelector("img.flag-img").getAttribute("flag-name").toLowerCase();
-  const cell = document.getElementById(flag_name);
-  const selector = '#' + flag_name;
+  const current_flag_name = document.querySelector("img.flag-img").getAttribute("flag-name").toLowerCase();
+  const cell = document.getElementById(current_flag_name);
+  const selector = '#' + current_flag_name;
   const cell_flag_name = document.querySelector(selector).getAttribute("flag-name");
 
-  if (flag_name == cell_flag_name) {
+  if (current_flag_name == cell_flag_name) {
     cell.classList.add('change-background_of_cell');
   }
   prev_cell = cell;
@@ -70,20 +75,45 @@ document.getElementById("next-button").addEventListener('click', () => {
   getPreviousFlag.previous_flag = shown_flags.length - 1;
 });
 
+
+function removeElements() {
+  document.getElementById("flag-image").style.display = "none";
+  document.getElementById("user-input").style.display = "none";
+  document.getElementById("next-button").style.display = "none";
+  document.getElementById("previous-button").style.display = "none";
+
+  const current_flag_name = document.querySelector("img.flag-img").getAttribute("flag-name").toLowerCase();
+  const cell = document.getElementById(current_flag_name);
+  cell.classList.remove('change-background_of_cell');
+}
+
+
+function play() {
+  document.getElementById("flag-image").style.display = "block";
+  document.getElementById("user-input").style.display = "flex";
+  document.getElementById("next-button").style.display = "flex";
+  document.getElementById("previous-button").style.display = "block";
+  checkCell();
+  document.getElementById("play-button").remove();
+}
+
+
 async function checkAnswer() {
   const user_answer = document.getElementById('user-input').value.toLowerCase();
-  const flag_name = document.querySelector("img.flag-img").getAttribute("flag-name").toLowerCase();
+  const current_flag_name = document.querySelector("img.flag-img").getAttribute("flag-name").toLowerCase();
   
-  if (user_answer == flag_name) {
+  if (user_answer == current_flag_name) {
     document.getElementById('user-input').value = "";
     
     shown_flags.pop();
     
-    if (!known_flags.has(flag_name)) {
-      known_flags.add(flag_name);
+    if (!known_flags.has(current_flag_name)) {
+      known_flags.add(current_flag_name);
     }     
     
     document.getElementById('score').textContent = known_flags.size + "/197";
+    const selector = "." + current_flag_name;
+    document.querySelector(selector).textContent = current_flag_name;
 
     let data = await getNextRandomFlag();
 
@@ -92,11 +122,9 @@ async function checkAnswer() {
       document.getElementById("user-input").remove();
       document.getElementById("next-button").remove();
       document.getElementById("previous-button").remove();
+      const cell = document.getElementById(data.name);
+      cell.classList.remove('change-background_of_cell');
       document.getElementById("terminated-message").textContent = "You knew all flag, good job!";
     }
   }
 }
-
-window.onload = async function() {
-  const data = await getNextRandomFlag();
-};

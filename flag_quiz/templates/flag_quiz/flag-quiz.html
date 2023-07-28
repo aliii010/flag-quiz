@@ -10,6 +10,7 @@
   <div id="main-container">
     <div id="game-bar-box">
       <div id="play-gamer-bar">
+        <button id="play-button" class="play-button" onclick="play()">PLAY QUIZ</button>
         <img src="{{ flag.image.url }}" id="flag-image" class="flag-img" src="images/cn.png" alt="{{ flag.name }}" flag-name="{{ flag.name }}">
         <button id="previous-button" onclick="getPreviousFlag()"><img src="{% static 'flag_quiz/images/left-arrow.png' %}" alt="left-arrow">Prev</button>
         <input id="user-input" oninput="checkAnswer()" type="text" placeholder="Enter Country">
@@ -26,9 +27,9 @@
       {% for row in rows %}
         <tr>
           {% for flag_data in row %}
-            <td id="{{ flag_data.name }}" flag-name="{{ flag_data.name }}">
+            <td id="{{ flag_data.name }}" class="cell" flag-name="{{ flag_data.name }}">
               <img src="{{ flag_data.image }}" alt="{{ flag_data.name }}">
-              <p>{{ flag_data.name }}</p>
+              <p class="{{ flag_data.name }}"></p>
             </td>
           {% endfor %}
         </tr>
