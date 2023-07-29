@@ -10,16 +10,19 @@
   <div id="main-container">
     <div id="game-bar-box">
       <div id="play-gamer-bar">
-        <button id="play-button" class="play-button" onclick="play()">PLAY QUIZ</button>
+        <button id="play-button" class="play-button" onclick="getElementsBack();">PLAY QUIZ</button>
+        <button id="resume-button" class="resume-button">RESUME</button>
         <img src="{{ flag.image.url }}" id="flag-image" class="flag-img" src="images/cn.png" alt="{{ flag.name }}" flag-name="{{ flag.name }}">
         <button id="previous-button" onclick="getPreviousFlag()"><img src="{% static 'flag_quiz/images/left-arrow.png' %}" alt="left-arrow">Prev</button>
         <input id="user-input" oninput="checkAnswer()" type="text" placeholder="Enter Country">
         <button id="next-button" onclick="getNextRandomFlag()">Next<img src="{% static 'flag_quiz/images/right-arrow.png' %}" alt="right-arrow"></button>
       </div>
       <div id="time-score-box">
-        <p id="score" class="score"><span>SCORE: </span>0/197</p>
-        <button class="pause-button"><img src="{% static 'flag_quiz/images/pause.png' %}" alt="pause"></button>
-        <p class="timer"><span>TIMER: </span>00:00</p>
+        <p class="score-gg">SCORE: </p>
+        <p id="score" class="score">0/197</p>
+        <button class="pause-button" id="pause-button"><img id="pause-icon" src="{% static 'flag_quiz/images/pause.png' %}" alt="pause"></button>
+        <p class="timer-gg">TIMER: </p>
+        <p id="timer" class="timer">18:00</p>
       </div>
     </div>
 
@@ -41,4 +44,5 @@
   </div>
 
   <script src="{% static 'flag_quiz/js/flag-quiz.js' %}"></script>
+  <script src="{% static 'flag_quiz/js/timer.js' %}"></script>
 {% endblock content %}

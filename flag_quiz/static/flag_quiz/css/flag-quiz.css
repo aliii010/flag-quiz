@@ -26,7 +26,7 @@
 #play-gamer-bar .flag-img {
   height: 100px;
   width: 160px;
-  object-fit: cover;
+  object-fit: contain;
 
   margin-right: 20px;
 }
@@ -72,6 +72,23 @@
   border-color: #4363d8;
 }
 
+#play-gamer-bar .play-button:hover {
+  background-color: #4363d8bd;
+  border-color: #4363d8bd;
+}
+
+#play-gamer-bar .resume-button {
+  width: 350px;
+  background-color: #4363d8;
+  color: #d3d3d3;
+  border-color: #4363d8;
+}
+
+#play-gamer-bar .resume-button:hover {
+  background-color: #4363d8bd;
+  border-color: #4363d8bd;
+}
+
 #play-gamer-bar input {
   margin: 0 20px 0 20px;
   padding: 10px;
@@ -93,19 +110,19 @@
   position: relative;
 }
 
-#time-score-box p {
+.score-gg, .timer-gg {
+  font-size: 20px;
+  font-weight: 500;
+  margin-right: 6px;
+}
+
+#timer, #score {
   font-size: 40px;
   font-weight: 700;
 }
 
 #time-score-box .score {
   margin-right: 20px;
-}
-
-#time-score-box p span {
-  font-size: 20px;
-  font-weight: 500;
-  margin-right: 6px;
 }
 
 #time-score-box .pause-button {

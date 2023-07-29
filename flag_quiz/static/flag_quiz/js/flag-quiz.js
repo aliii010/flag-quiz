@@ -41,7 +41,6 @@ async function getNextRandomFlag() {
   }
 
   shown_flags.push(data);
-  console.log(shown_flags);
 
   const img_element = document.querySelector("img.flag-img");
   img_element.alt = data.name;
@@ -81,6 +80,7 @@ function removeElements() {
   document.getElementById("user-input").style.display = "none";
   document.getElementById("next-button").style.display = "none";
   document.getElementById("previous-button").style.display = "none";
+  document.getElementById("resume-button").style.display = "none";
 
   const current_flag_name = document.querySelector("img.flag-img").getAttribute("flag-name").toLowerCase();
   const cell = document.getElementById(current_flag_name);
@@ -88,13 +88,13 @@ function removeElements() {
 }
 
 
-function play() {
+function getElementsBack() {
   document.getElementById("flag-image").style.display = "block";
   document.getElementById("user-input").style.display = "flex";
   document.getElementById("next-button").style.display = "flex";
   document.getElementById("previous-button").style.display = "block";
   checkCell();
-  document.getElementById("play-button").remove();
+  document.getElementById("play-button").style.display = "none";
 }
 
 
@@ -124,6 +124,7 @@ async function checkAnswer() {
       document.getElementById("previous-button").remove();
       const cell = document.getElementById(data.name);
       cell.classList.remove('change-background_of_cell');
+      clearInterval(countdown);
       document.getElementById("terminated-message").textContent = "You knew all flag, good job!";
     }
   }
