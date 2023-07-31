@@ -77,13 +77,6 @@
   border-color: #4363d8bd;
 }
 
-#play-gamer-bar .resume-button {
-  width: 350px;
-  background-color: #4363d8;
-  color: #d3d3d3;
-  border-color: #4363d8;
-}
-
 #play-gamer-bar .resume-button:hover {
   background-color: #4363d8bd;
   border-color: #4363d8bd;
@@ -174,4 +167,95 @@ table img {
 
 .change-background_of_cell {
   background-color: #4363d8bd;
+}
+
+#resume-container {
+  z-index: 1000;
+  background-color: #d4d4d4;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  position: fixed;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+
+  font-weight: 700;
+  font-size: 20px;
+  color: darkred;
+}
+
+#resume-container div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 65%;
+  height: 80px;
+
+
+  margin-top: 20px;
+  font-weight: 700;
+  font-size: 20px;
+  color: black;
+
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+}
+
+#resume-container div .how-many-more {
+  width: 190px;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: center;
+}
+
+#resume-container.visible {
+  max-height: 100%;
+  opacity: 1;
+}
+
+#resume-container.hidden {
+  max-height: 0;
+  opacity: 0;
+}
+
+#resume-button {
+  width: 150px;
+  background-color: #4363d8;
+  color: #d3d3d3;
+
+  border: 2px solid #4363d8;
+  border-radius: 4px;
+  cursor: pointer;
+
+  padding: 12px 16px 12px 16px;
+  font-size: 16px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#resume-button:hover {
+  background-color: #4363d89e;
+  border-color: #4363d800;
+}
+
+#terminated-message {
+  font-weight: 700;
+  font-size: 25px;
+  margin-right: 20px;
 }

@@ -3,6 +3,10 @@ window.onload = async function() {
   removeElements();
 };
 
+function reloadPage() {
+  location.reload();
+}
+
 // fetching json data (name, image and etc.) from the server side using getNextRandomFlag function in views.py
 async function fetchJson(url) {
   const response = await fetch(url);
@@ -80,7 +84,9 @@ function removeElements() {
   document.getElementById("user-input").style.display = "none";
   document.getElementById("next-button").style.display = "none";
   document.getElementById("previous-button").style.display = "none";
-  document.getElementById("resume-button").style.display = "none";
+  document.getElementById("pause-button").style.display = "none";
+  document.getElementById("terminated-message").style.display = "none";
+  document.getElementById("play-again-button").style.display = "none";
 
   const current_flag_name = document.querySelector("img.flag-img").getAttribute("flag-name").toLowerCase();
   const cell = document.getElementById(current_flag_name);
@@ -93,6 +99,7 @@ function getElementsBack() {
   document.getElementById("user-input").style.display = "flex";
   document.getElementById("next-button").style.display = "flex";
   document.getElementById("previous-button").style.display = "block";
+  document.getElementById("pause-button").style.display = "flex";
   checkCell();
   document.getElementById("play-button").style.display = "none";
 }
@@ -118,14 +125,11 @@ async function checkAnswer() {
     let data = await getNextRandomFlag();
 
     if (known_flags.size === data.total_flag) {
-      document.getElementById("flag-image").remove();
-      document.getElementById("user-input").remove();
-      document.getElementById("next-button").remove();
-      document.getElementById("previous-button").remove();
-      const cell = document.getElementById(data.name);
-      cell.classList.remove('change-background_of_cell');
+      removeElements();
       clearInterval(countdown);
-      document.getElementById("terminated-message").textContent = "You knew all flag, good job!";
+      document.getElementById("terminated-message").style.display = "block";
+      document.getElementById("terminated-message").textContent = "You named all the flags, good job!";
+      document.getElementById("play-again-button").style.display = "flex";
     }
   }
 }

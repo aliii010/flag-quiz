@@ -3,25 +3,28 @@ let time_remaining;
 let countdown;
 
 document.getElementById('play-button').addEventListener('click', () => {
-  until = new Date().getTime() + (18 * 60 + 2) * 1000;
+  until = new Date().getTime() + (0.01 * 60 + 2) * 1000;
   startTimer();
 });
 
+const resumeContainer = document.getElementById('resume-container');
 
 document.getElementById('resume-button').addEventListener('click', () => {
   until = new Date().getTime() + time_remaining;
   startTimer();
-
-  getElementsBack();
-  document.getElementById("resume-button").style.display = "none";
-  document.getElementById('pause-icon').src = "/static/flag_quiz/images/pause.png";
+  resumeContainer.classList.add('hidden');
+  resumeContainer.classList.remove('visible');
 });
 
 document.getElementById('pause-button').addEventListener('click', () => {
   clearInterval(countdown);
-  removeElements();
-  document.getElementById("resume-button").style.display = "block";
-  document.getElementById('pause-icon').src = "/static/flag_quiz/images/resume.png";
+  resumeContainer.classList.add('visible');
+  resumeContainer.classList.remove('hidden');
+
+  const time_resumed = document.getElementById('timer').textContent;
+  document.getElementById('resume-time-remaining').textContent = time_resumed + " REMAINING";
+  const score_resumed = document.getElementById('score').textContent;
+  document.getElementById('resume-score').textContent = score_resumed + " SCORE";
 });
 
 
@@ -34,6 +37,11 @@ function startTimer() {
       clearInterval(countdown);
       document.getElementById('timer').innerHTML = "00:00";
       document.getElementById('timer').style.color = "#8f0000";
+
+      removeElements();
+      document.getElementById("terminated-message").style.display = "block";
+      document.getElementById("terminated-message").textContent = "You named " + known_flags.size + " flags";
+      document.getElementById("play-again-button").style.display = "flex";
     } else {
       const minutes = Math.floor((time_remaining % (1000 * 60 * 60)) / (1000 * 60));
       let seconds = Math.floor((time_remaining % (1000 * 60)) / 1000);
