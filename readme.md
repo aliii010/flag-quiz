@@ -7,7 +7,7 @@
 ### Clone the project
 
 ```bash
-git clone https://github.com/aliii010/uni_food.git
+git clone https://github.com/aliii010/flag-quiz.git
 ```
 
 ### Go to the project directory
@@ -45,3 +45,13 @@ pip install -r requirements.txt
 ```bash
 python manage.py runserver
 ```
+
+## Preview
+
+### 🏠 Page 1
+
+![Homepage](file_uploads/flags_images/page-1.png)
+
+### 🏠 Page 2
+
+![Homepage](file_uploads/flags_images/page-2.png)
