@@ -7,7 +7,7 @@
 ### Clone the project
 
 ```bash
-git clone https://github.com/aliii010/uni_food.git
+git clone https://github.com/aliii010/flag-quiz.git
 ```
 
 ### Go to the project directory
