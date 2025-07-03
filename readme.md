@@ -13,7 +13,7 @@ git clone https://github.com/aliii010/uni_food.git
 ### Go to the project directory
 
 ```bash
-cd uni-food
+cd flag-quiz
 ```
 
 ### Set up a virtual environment
