@@ -3,7 +3,7 @@ let time_remaining;
 let countdown;
 
 document.getElementById('play-button').addEventListener('click', () => {
-  until = new Date().getTime() + (0.01 * 60 + 2) * 1000;
+  until = new Date().getTime() + (18 * 60 + 2) * 1000;
   startTimer();
 });
 
